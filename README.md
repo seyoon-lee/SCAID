@@ -93,3 +93,42 @@ bash Wrapper_CellRanger.sh \
     --id Sample_003 \
     --config config_file.csv
 ```
+
+
+## CellBender Wrapper
+
+The **CellBender Wrapper** (`Wrapper_CellBender.sh`) automates the ambient RNA removal process using **CellBender v0.3.0** for specific disease codes from the **SCAID** dataset. This script filters CellRanger output files based on a disease code and runs **CellBender** on the `raw_feature_bc_matrix.h5` files, removing ambient RNA contamination to enhance the quality of downstream single-cell data analysis.
+
+### Usage
+
+This script requires a disease code as input. It automatically identifies the relevant `raw_feature_bc_matrix.h5` files, processes them with **CellBender**, and stores the cleaned data in the same directory.
+
+```bash
+bash Wrapper_CellBender.sh <disease_code>
+```
+
+Parameters
+<disease_code>: The code associated with the disease or dataset of interest (e.g., "ILD"). This code is used to filter the files before running CellBender.
+
+Workflow
+Activate the CellBender Environment: The script begins by activating the CellBender v0.3.0 environment. You may replace the default environment path with your own if necessary.
+
+bash
+코드 복사
+source /mnt/gmi-l1/_90.User_Data/sylash92/1.Programs/miniforge3/bin/activate cellbender
+Find CellRanger Output Files: It searches for raw_feature_bc_matrix.h5 files in the specified CellRanger output directory (/02.CellRanger_output).
+
+Filter by Disease Code: The script filters the list of raw_feature_bc_matrix.h5 files based on the specified disease code (from the 7th layer of the file path). Only files located in the "outs" directory are considered for processing.
+
+Run CellBender: For each filtered file, the script checks whether CellBender has already been run (i.e., if a CellBender_Done file exists). If not, CellBender is executed to remove ambient RNA contamination using the following parameters:
+
+input: The path to the raw_feature_bc_matrix.h5 file.
+output: The cleaned file is saved as <cellranger_id>_cellbender_output.h5.
+cuda: Enables GPU acceleration for faster processing.
+fpr: Sets the false positive rate threshold for ambient RNA (default: 0.01, 0.05, 0.1).
+epochs: Number of training epochs (default: 150).
+low-count-threshold: Sets the threshold for low counts (default: 5).
+projected-ambient-count-threshold: Sets the projected ambient count threshold (default: 0.1; may need adjustment for scATAC-seq data).
+Mark Completion: Once CellBender has successfully processed a sample, a CellBender_Done file is created in the sample directory to avoid redundant reprocessing.
+
+
