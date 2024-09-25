@@ -8,16 +8,6 @@ souporcellpy="/mnt/gmi-l1/_90.User_Data/sylash92/3.Environments/souporcell/soupo
 cellranger_output="/mnt/gmi-l1/_90.User_Data/Shared_SCAID/02.CellRanger_output"
 
 # Define the list of sample-multiplex_k pairs
-## 24.03.26 SY ##
-## Rerun using cellbender barcodes ##
-       #"AA_B0005a-B0008a-B0017a-B0029a_5GTS 4"
-       #"AA_B0033a-B0055a-B0002a-B0006a_5GTS 4"
-       #"AA_B0010a-B0019a-B0034a-B0043a_5GTS 4"
-       #"AA_B0045a-B0047a-B0059a-B0071a_5GTS 4"
-       #"AA_B0005b-B0008b-B0017b-B0029b_5GTS 4"
-       #"AA_B0033b-B0055b-B0002b-B0006b_5GTS 4"
-       #"AA_B0010b-B0019b-B0034b-B0043b_5GTS 4"
-       #"AA_B0045b-B0047b-B0059b-B0071b_5GTS 4"
 
 ## 24.04.10 SY ##
 pairs=("RAAS_B0001a-S0002a-S0003a_5GVS 3"
