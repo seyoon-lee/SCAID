@@ -55,6 +55,7 @@ bash Wrapper_CellRanger.sh \
     --fastq_name [fastq prefix name] \
     --fastq_path [directory path where fastqs are located] \
     --config [config csv file]
+```
 
 ### Supported Chemistries:
 - **3' GEX**
@@ -64,16 +65,4 @@ bash Wrapper_CellRanger.sh \
 - **Multiome**
 
 This ensures that the appropriate CellRanger commands and parameters are applied to each dataset, simplifying the management of large, complex data repositories.
-
-### Command Example:
-
-```bash
-bash Wrapper_CellRanger.sh \
-    --plex Multi_CSP \
-    --chemistry Multiome \
-    Atlas_001 \
-    --fastq_name Sample_001 \
-    --fastq_path /path/to/fastqs \
-    --config config_multi.csv
-
 
