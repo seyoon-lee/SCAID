@@ -107,28 +107,32 @@ This script requires a disease code as input. It automatically identifies the re
 bash Wrapper_CellBender.sh <disease_code>
 ```
 
-Parameters
+#### Parameters
 <disease_code>: The code associated with the disease or dataset of interest (e.g., "ILD"). This code is used to filter the files before running CellBender.
 
-Workflow
-Activate the CellBender Environment: The script begins by activating the CellBender v0.3.0 environment. You may replace the default environment path with your own if necessary.
+#### Workflow
+1. Activate the CellBender Environment: The script begins by activating the CellBender v0.3.0 environment. You may replace the default environment path with your own if necessary.
 
-bash
-코드 복사
-source /mnt/gmi-l1/_90.User_Data/sylash92/1.Programs/miniforge3/bin/activate cellbender
-Find CellRanger Output Files: It searches for raw_feature_bc_matrix.h5 files in the specified CellRanger output directory (/02.CellRanger_output).
+```bash
+source activate cellbender
+```
+2. Find CellRanger Output Files: It searches for raw_feature_bc_matrix.h5 files in the specified CellRanger output directory (/02.CellRanger_output).
 
-Filter by Disease Code: The script filters the list of raw_feature_bc_matrix.h5 files based on the specified disease code (from the 7th layer of the file path). Only files located in the "outs" directory are considered for processing.
+3. Filter by Disease Code: The script filters the list of raw_feature_bc_matrix.h5 files based on the specified disease code (from the 7th layer of the file path). Only files located in the "outs" directory are considered for processing.
 
-Run CellBender: For each filtered file, the script checks whether CellBender has already been run (i.e., if a CellBender_Done file exists). If not, CellBender is executed to remove ambient RNA contamination using the following parameters:
+4. Run CellBender: For each filtered file, the script checks whether CellBender has already been run (i.e., if a CellBender_Done file exists). If not, CellBender is executed to remove ambient RNA contamination using the following parameters:
 
-input: The path to the raw_feature_bc_matrix.h5 file.
-output: The cleaned file is saved as <cellranger_id>_cellbender_output.h5.
-cuda: Enables GPU acceleration for faster processing.
-fpr: Sets the false positive rate threshold for ambient RNA (default: 0.01, 0.05, 0.1).
-epochs: Number of training epochs (default: 150).
-low-count-threshold: Sets the threshold for low counts (default: 5).
-projected-ambient-count-threshold: Sets the projected ambient count threshold (default: 0.1; may need adjustment for scATAC-seq data).
-Mark Completion: Once CellBender has successfully processed a sample, a CellBender_Done file is created in the sample directory to avoid redundant reprocessing.
+- input: The path to the raw_feature_bc_matrix.h5 file.
+- output: The cleaned file is saved as <cellranger_id>_cellbender_output.h5.
+- cuda: Enables GPU acceleration for faster processing.
+- fpr: Sets the false positive rate threshold for ambient RNA (default: 0.01, 0.05, 0.1).
+- epochs: Number of training epochs (default: 150).
+- low-count-threshold: Sets the threshold for low counts (default: 5).
+- projected-ambient-count-threshold: Sets the projected ambient count threshold (default: 0.1; may need adjustment for scATAC-seq data).
 
+5. Mark Completion: Once CellBender has successfully processed a sample, a CellBender_Done file is created in the sample directory to avoid redundant reprocessing.
+
+#### Notes
+The script prevents reprocessing by checking for the presence of a CellBender_Done file.
+You can modify the CellBender parameters (e.g., fpr, epochs, etc.) depending on your data requirements, such as using different thresholds for scATAC-seq data.
 
