@@ -1,0 +1,8 @@
+[gene-expression],,
+reference,/mnt/gmi-l1/_90.User_Data/Shared_SCAID/Reference/_10xgenomics/refdata-gex-GRCh38-2024-A,
+create-bam,TRUE,
+[vdj],,
+reference,/mnt/gmi-l1/_90.User_Data/Shared_SCAID/Reference/_10xgenomics/refdata-cellranger-vdj-GRCh38-alts-ensembl-7.1.0,
+[libraries],,
+fastq_id,fastqs,feature_types
+pIBD_1_GEX,/mnt/gmi-storage/_0.raw_data/SCAID/pIBD_PediatricIBD/5_SC_RNA,Gene Expression

@@ -1,0 +1,19 @@
+﻿[gene-expression],,
+reference,/mnt/gmi-l1/_90.User_Data/Shared_SCAID/Reference/_10xgenomics/refdata-gex-GRCh38-2024-A,
+cmo-set,/mnt/gmi-l1/_90.User_Data/Shared_SCAID/Reference/demultiplexing_hashing/Biolegend_5p_hashing_demux_cmo-set.csv,
+create-bam,TRUE,
+,,
+[vdj],,
+reference,/mnt/gmi-l1/_90.User_Data/Shared_SCAID/Reference/_10xgenomics/refdata-cellranger-vdj-GRCh38-alts-ensembl-7.1.0,
+,,
+[libraries],,
+fastq_id,fastqs,feature_types
+pIBD_2_PBMC_GEX,/mnt/gmi-storage/_0.raw_data/SCAID/pIBD_PediatricIBD/5_SC_RNA,Gene Expression
+pIBD_2_PBMC_CSP,/mnt/gmi-storage/_0.raw_data/SCAID/pIBD_PediatricIBD/5_SC_RNA,Multiplexing Capture
+,,
+[samples],,
+sample_id,cmo_ids,
+PIBD_B0005a,C-313,
+PIBD_B0006a,C-314,
+PIBD_B0007a,C-315,
+PIBD_B0008a,C-301,
