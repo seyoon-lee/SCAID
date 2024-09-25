@@ -258,7 +258,7 @@ This research was supported by the **Bio & Medical Technology Development Progra
 <div align="center">
 
 
-![Repository Social Preview](seyoon-lee/SCAID/doc/SCAID_github_thumb.png)
+![Repository Social Preview](doc/SCAID_github_thumb.png)
 
     <img src="https://github.com/user-attachments/assets/a6eac0c1-1745-4f8b-84b7-6024374036d9" alt="Research Funding">
 </div>
