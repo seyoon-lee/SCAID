@@ -41,17 +41,17 @@ You can customize the fields based on your requirements.
 
 ## CellRanger Wrapper
 
-The **CellRanger Wrapper** script, `Wrapper_CellRanger.sh`, automates the process of running CellRanger for different types of single-cell RNA-seq data, including multiplexed and non-multiplexed samples, using various sequencing chemistries.
+The **CellRanger Wrapper** (`Wrapper_CellRanger.sh`) script automates the execution of various CellRanger workflows for different types of single-cell data and sequencing chemistries. This script supports both single and multiplexed data, with options for SNP or hashtag-based demultiplexing. It handles multiple sequencing technologies such as 3' GEX, 5' GEX, VDJ, ATAC, and Multiome.
 
 ### Usage
 
-You can run the script using the following command:
+You can run the `Wrapper_CellRanger.sh` script with the following options:
 
 ```bash
 bash Wrapper_CellRanger.sh \
     --plex [Single | Multi_SNP | Multi_CSP] \ 
     --chemistry [3 | 5 | ATAC | Multiome] \
-    [cellranger_id] \ 
+    --id [cellranger_id] \
     --fastq_name [fastq prefix name] \
     --fastq_path [directory path where fastqs are located] \
     --config [config csv file]
@@ -66,3 +66,30 @@ bash Wrapper_CellRanger.sh \
 
 This ensures that the appropriate CellRanger commands and parameters are applied to each dataset, simplifying the management of large, complex data repositories.
 
+### Example 1: Running for a Single Plex 3' GEX Sample
+```bash
+bash Wrapper_CellRanger.sh \
+    --plex Single \
+    --chemistry 3 \
+    --id Sample_001 \
+    --fastq_name Sample_001 \
+    --fastq_path /path/to/fastq
+```
+
+### Example 2: Running for a Multi Plex 5' GEX Sample with SNP Demultiplexing
+```bash
+bash Wrapper_CellRanger.sh \
+    --plex Multi_SNP \
+    --chemistry 5 \
+    --id Sample_002 \
+    --config config_file.csv
+```
+
+### Example 3: Running for a Multi Plex 5' GEX Sample with CSP Demultiplexing
+```bash
+bash Wrapper_CellRanger.sh \
+    --plex Multi_CSP \
+    --chemistry 5 \
+    --id Sample_003 \
+    --config config_file.csv
+```
