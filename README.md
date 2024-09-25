@@ -37,9 +37,24 @@ The CSV should contain the following columns:
 
 You can customize the fields based on your requirements.
 
+
+
 ## CellRanger Wrapper
 
-The pipeline includes an automated wrapper for **CellRanger** that runs the appropriate commands based on the chemistry of your data.
+The **CellRanger Wrapper** script, `Wrapper_CellRanger.sh`, automates the process of running CellRanger for different types of single-cell RNA-seq data, including multiplexed and non-multiplexed samples, using various sequencing chemistries.
+
+### Usage
+
+You can run the script using the following command:
+
+```bash
+bash Wrapper_CellRanger.sh \
+    --plex [Single | Multi_SNP | Multi_CSP] \ 
+    --chemistry [3 | 5 | ATAC | Multiome] \
+    [cellranger_id] \ 
+    --fastq_name [fastq prefix name] \
+    --fastq_path [directory path where fastqs are located] \
+    --config [config csv file]
 
 ### Supported Chemistries:
 - **3' GEX**
@@ -53,6 +68,12 @@ This ensures that the appropriate CellRanger commands and parameters are applied
 ### Command Example:
 
 ```bash
-python run_cellranger.py --config input_config.csv
+bash Wrapper_CellRanger.sh \
+    --plex Multi_CSP \
+    --chemistry Multiome \
+    Atlas_001 \
+    --fastq_name Sample_001 \
+    --fastq_path /path/to/fastqs \
+    --config config_multi.csv
 
 
