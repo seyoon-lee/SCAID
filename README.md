@@ -11,7 +11,7 @@ This repository contains a data preprocessing pipeline for the **Single Cell Atl
 1. [Creating Input Config file](#creating-input-config-file)
 2. [CellRanger Wrapper](#cellranger-wrapper)
 3. [CellBender Wrapper](#cellbender-wrapper)
-4. [CSP Demultiplexing](#demultiplexing)
+4. [CSP Demultiplexing](#CSP-Demultiplexing---Hashtag_demulti)
 5. [SNP Demultiplexing](#SNP-Demultiplexing---SoupOrCell)
 6. [Preprocessing](#preprocessing)
 7. [Integration](#integration)
@@ -137,8 +137,6 @@ source activate cellbender
 The script prevents reprocessing by checking for the presence of a CellBender_Done file.
 
 
-## Demultiplexing
-
 ## CSP Demultiplexing - Hashtag_demulti
 
 The **CSP Demultiplexing** (`Hashtag_demulti.sh`) script is designed to automate the post-CellRanger multi-step demultiplexing process for hashtag-labeled (CSP) single-cell RNA-seq data. The script processes CellRanger outputs by extracting and formatting the necessary data for downstream analyses, and it converts BAM files into FASTQ files using **bamtofastq**.
@@ -210,8 +208,6 @@ For each sample processed, the script generates:
 - **Custom BAM and FASTQ Processing**: The script extracts the number of reads and cells from the CellRanger output metrics, rounds the reads, and splits the BAM files into FASTQ files for further analysis.
 - **CSV Creation**: After processing, a CSV file is generated for each sample, specifying the reference data, the number of cells, and the libraries to be used in future analyses.
 - **Ensure Proper GEX and CMO Configuration**: The script assumes that **GEX** appears before **CMO** in the original configuration file. This should be verified manually in cases where **TCR/BCR** information is included.
-
-
 
 
 ## SNP Demultiplexing - SoupOrCell
