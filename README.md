@@ -246,12 +246,15 @@ This script iterates through a predefined list of sample-multiplex_k pairs, wher
 - `assignment.tsv`: A file linking each cell barcode to its respective donor.
 
 
-# Acknowledgements:
-**Contact**
-* https://genome.snu.ac.kr/
-* https://scaid.org/
-* https://x.com/Seyoon_L
+# Acknowledgements
 
-**Research Funding**
-This research was supported by the Bio & Medical Technology Development Program of the National Research Foundation (NRF) funded by the Korean government (MSIT) (No. 2022M3A9D3016848). 
-![image](https://github.com/user-attachments/assets/a6eac0c1-1745-4f8b-84b7-6024374036d9)
+### Contact
+- [Genome Institute - Seoul National University](https://genome.snu.ac.kr/)
+- [SCAID Project](https://scaid.org/)
+- [Seyoon Lee on X](https://x.com/Seyoon_L)
+
+### Research Funding
+This research was supported by the **Bio & Medical Technology Development Program** of the **National Research Foundation (NRF)** funded by the Korean government (MSIT), grant number **2022M3A9D3016848**.
+<div align="center">
+    <img src="https://github.com/user-attachments/assets/a6eac0c1-1745-4f8b-84b7-6024374036d9" alt="Research Funding">
+</div>
