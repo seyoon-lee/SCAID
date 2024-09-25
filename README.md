@@ -245,5 +245,8 @@ This script iterates through a predefined list of sample-multiplex_k pairs, wher
 - `genotype.vcf`: SNP genotype information for each donor.
 - `assignment.tsv`: A file linking each cell barcode to its respective donor.
 
-This process ensures accurate demultiplexing of cells from pooled scRNA-seq experiments, enabling downstream analysis of individual donors.
+
+## Research Funding
+This research was supported by the Bio & Medical Technology Development Program of the National Research Foundation (NRF) funded by the Korean government (MSIT) (No. 2022M3A9D3016848). 
+![image](https://github.com/user-attachments/assets/b0119a5e-79e2-4328-ad83-e2348408cca6)
 
