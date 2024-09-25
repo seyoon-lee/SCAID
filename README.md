@@ -137,21 +137,79 @@ The script prevents reprocessing by checking for the presence of a CellBender_Do
 
 
 ## Demultiplexing
+
 ## CSP Demultiplexing - Hashtag_demulti
 
-The **CSP Demultiplexing** (`Hashtag_demulti.sh`) script is designed to handle the post-CellRanger multi-step demultiplexing process for hashtag-labeled (CSP) single-cell RNA-seq data. It processes CellRanger outputs by extracting and formatting necessary data for downstream analyses and converts BAM files into FASTQ files using **bamtofastq**.
+The **CSP Demultiplexing** (`Hashtag_demulti.sh`) script is designed to automate the post-CellRanger multi-step demultiplexing process for hashtag-labeled (CSP) single-cell RNA-seq data. The script processes CellRanger outputs by extracting and formatting the necessary data for downstream analyses, and it converts BAM files into FASTQ files using **bamtofastq**.
 
 #### Usage
 
-This script processes all sample outputs from a CellRanger multi-step run, extracts key metrics (such as the number of reads and cells), rounds up the number of reads, and runs **bamtofastq** on the corresponding BAM files.
+This script processes all the sample outputs from a CellRanger multi-step run, extracts key metrics (such as the number of reads and cells), rounds up the number of reads, and runs **bamtofastq** on the corresponding BAM files.
 
 ```bash
 bash Hashtag_demulti.sh -p <absolute_path> -f <folder_id>
 ```
 
 #### Parameters
-    -p, --path: Specify the absolute path to the base directory where the CellRanger output folder is located.
-    -f, --folder: Specify the folder identifier for the CellRanger run to process.
+
+- **-p, --path**: Specify the absolute path to the base directory where the CellRanger output folder is located.
+- **-f, --folder**: Specify the folder identifier for the CellRanger run to process.
+
+#### Example
+
+```bash
+bash Hashtag_demulti.sh -p /mnt/gmi-l1/_90.User_Data/Shared_SCAID/02.CellRanger_output -f sample_001
+```
+
+#### Workflow
+
+1. **Activate CellRanger Tools**:  
+   The script begins by sourcing the bundled tools with **CellRanger** to ensure **bamtofastq** and other required tools are available in the path.
+
+   ```bash
+   source /mnt/gmi-l1/_90.User_Data/Shared_SCAID/Programs/cellranger-7.2.0/sourceme.bash
+   ```
+
+2. **Round Up Function**:  
+   The script includes a custom function to round up the number of reads extracted from the metrics file to the nearest significant digit. This ensures optimal splitting of FASTQ files during the bamtofastq step.
+
+3. **Identify Subfolders**:  
+   The script searches for all subfolders within the `outs/per_sample_outs` directory for each sample in the specified `folder_id`.
+
+4. **Extract and Process Metrics**:  
+   For each subfolder, the script extracts the number of reads and the number of cells from the `metrics_summary.csv` file. It then rounds up the number of reads and prepares to process the BAM files.
+
+5. **Run bamtofastq**:  
+   The **bamtofastq** tool is run on the BAM file for each subfolder, using the rounded number of reads to split the files appropriately.
+
+   ```bash
+   bamtofastq --reads-per-fastq=<rounded_number_of_reads> <input_bam_file> <output_fastq_directory>
+   ```
+
+6. **Create Per-Sample CSV**:  
+   After converting the BAM to FASTQ, the script generates a configuration CSV file for each sample. This file includes:
+   
+   - **Gene Expression** library configuration.
+   - **VDJ** library configuration.
+   - A **library list** that points to the generated FASTQ files for each sample.
+
+   The CSV is created in the base path and is used for downstream processing.
+
+7. **Important Considerations**:  
+   The script assumes that the first `bamtofastq` folder created for each sample is for **Gene Expression (GEX)**. It is important to ensure that the **GEX** library comes before the **CMO** library in the original CellRanger config file.
+
+#### Example Output
+
+For each sample processed, the script generates:
+- A folder containing the **FASTQ** files split from the BAM file.
+- A per-sample **CSV** file that specifies the libraries and references for the subsequent CellRanger or downstream analysis.
+
+#### Notes
+
+- **Custom BAM and FASTQ Processing**: The script extracts the number of reads and cells from the CellRanger output metrics, rounds the reads, and splits the BAM files into FASTQ files for further analysis.
+- **CSV Creation**: After processing, a CSV file is generated for each sample, specifying the reference data, the number of cells, and the libraries to be used in future analyses.
+- **Ensure Proper GEX and CMO Configuration**: The script assumes that **GEX** appears before **CMO** in the original configuration file. This should be verified manually in cases where **TCR/BCR** information is included.
+
 
 
 
