@@ -229,7 +229,7 @@ This script iterates through a predefined list of sample-multiplex_k pairs, wher
 - `sample`: The name of the sample processed by **CellRanger**.
 - `multiplex_k`: The number of multiplexed individuals (donors) in the sample.
 
-### Workflow
+#### Workflow
 
 1. **Activate the SoupOrCell Environment**: The script activates the `souporcell` environment to run the **SoupOrCell** pipeline.
     ```bash
