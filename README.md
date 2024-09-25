@@ -248,7 +248,6 @@ This script iterates through a predefined list of sample-multiplex_k pairs, wher
 
 # Acknowledgements:
 **Contact**
-
 * https://genome.snu.ac.kr/
 * https://scaid.org/
 * https://x.com/Seyoon_L
