@@ -11,9 +11,10 @@ This repository contains a data preprocessing pipeline for the **Single Cell Atl
 1. [Creating Input Config file](#creating-input-config-file)
 2. [CellRanger Wrapper](#cellranger-wrapper)
 3. [CellBender Wrapper](#cellbender-wrapper)
-4. [Demultiplexing](#demultiplexing)
-5. [Preprocessing](#preprocessing)
-6. [Integration](#integration)
+4. [CSP Demultiplexing](#demultiplexing)
+5. [SNP Demultiplexing](#SNP-Demultiplexing---SoupOrCell)
+6. [Preprocessing](#preprocessing)
+7. [Integration](#integration)
 
 ---
 
