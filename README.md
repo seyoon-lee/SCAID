@@ -249,7 +249,7 @@ This script iterates through a predefined list of sample-multiplex_k pairs, wher
 # Acknowledgements
 
 ### Contact
-- [Genome Institute - Seoul National University](https://genome.snu.ac.kr/)
+- [Genomic Medicine Institute - Seoul National University](https://genome.snu.ac.kr/)
 - [SCAID Project](https://scaid.org/)
 - [Seyoon Lee on X](https://x.com/Seyoon_L)
 
