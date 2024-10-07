@@ -245,6 +245,10 @@ This script iterates through a predefined list of sample-multiplex_k pairs, wher
 - `genotype.vcf`: SNP genotype information for each donor.
 - `assignment.tsv`: A file linking each cell barcode to its respective donor.
 
+# SCAID Integration Pipeline Scheme
+
+![SCAID_Ver1_Pipeline](https://github.com/user-attachments/assets/828e52c4-bda8-49e1-ac2c-e328c255a03f)
+
 
 # Acknowledgements
 
@@ -256,5 +260,6 @@ This script iterates through a predefined list of sample-multiplex_k pairs, wher
 ### Research Funding
 This research was supported by the **Bio & Medical Technology Development Program** of the **National Research Foundation (NRF)** funded by the Korean government (MSIT), grant number **2022M3A9D3016848**.
 <div align="center">
+
     <img src="https://github.com/user-attachments/assets/a6eac0c1-1745-4f8b-84b7-6024374036d9" alt="Research Funding">
 </div>
